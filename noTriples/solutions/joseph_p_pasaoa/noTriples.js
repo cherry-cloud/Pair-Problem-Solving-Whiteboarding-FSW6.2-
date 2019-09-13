@@ -32,6 +32,17 @@ const noTriples = (arr) => {
 }
 */
 
+/* BEST ANSWER I'VE SEEN IMO (author ELISANDRA CARDONA)
+const noTriples = (arr) => {
+  for (let i = 0; i < arr.length - 2; i++) {
+    if (arr[i] === arr[i+1] && arr[i] === arr[i+2]) {
+      return false;
+    }
+  }
+  return true;
+}
+*/
+
 console.log(noTriples([1,1,2,2,1]));
 console.log(noTriples([1,1,2,2,2,1]));
 console.log(noTriples([0,0,1,0,-4,3,-5]));
