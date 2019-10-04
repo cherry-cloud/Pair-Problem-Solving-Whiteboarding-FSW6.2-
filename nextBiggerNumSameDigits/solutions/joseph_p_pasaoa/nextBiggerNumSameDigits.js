@@ -2,8 +2,8 @@
 //
 
 const nextBiggerNumSameDigits = (inputNum) => {
-  // Helper functions that find digit makeup obj and 'fingerprint' obj of any num //
-  const getMakeup = (num) => {
+  // Helper functions that create a digit makeup obj and a unique (hopefully) 'fingerprint' obj of any num //
+  const createMakeup = (num) => {
     let makeupObj = {};
     let inputArr = '' + num;
     inputArr.split('');
@@ -16,17 +16,17 @@ const nextBiggerNumSameDigits = (inputNum) => {
     }
     return makeupObj;
   }
-  const getFingerprint = (makeupObj) => {
+  const createFingerprint = (makeupObj) => {
     let fingerprintStr = (Object.keys(makeupObj)).join('');
     fingerprintStr += (Object.values(makeupObj)).join('');
     return fingerprintStr;
   }
   
   // Saves makeup obj & fingerprint obj of input num //
-  const inputMakeup = getMakeup(inputNum);
-  const inputFingerprint = getFingerprint(inputMakeup);
+  const inputMakeup = createMakeup(inputNum);
+  const inputFingerprint = createFingerprint(inputMakeup);
 
-  // Uses input makeup obj to determine largest poss num with same digits //
+  // Uses input's makeup obj to determine largest poss num with same digits //
   let inputDigitsArr = Object.keys(inputMakeup);
   inputDigitsArr = inputDigitsArr.reverse();
   let biggestPossibleNum = '';
@@ -42,9 +42,9 @@ const nextBiggerNumSameDigits = (inputNum) => {
     return -1;
   }
 
-  // Finds next possible num with same input digits //
+  // Otherwise, this last step finds and returns the next possible num with same input digits //
   for (let i = inputNum + 1; i <= biggestPossibleNum; i++) {
-    if (inputFingerprint === getFingerprint(getMakeup(i))) {
+    if (inputFingerprint === createFingerprint(createMakeup(i))) {
       return i;
     }
   }
